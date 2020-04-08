@@ -1,15 +1,13 @@
 [Unit]
-Description=My app
+Description=Read Temperature cache Service
+After=network.target
+After=mysqld.Service
 
 [Service]
-ExecStart=/home/pi/getTemp/getTempStoreInDB.js
+User=root
 Restart=always
-User=nobody
-# Note Debian/Ubuntu uses 'nogroup', RHEL/Fedora uses 'nobody'
-Group=nogroup
-Environment=PATH=/usr/bin:/usr/local/bin
-Environment=NODE_ENV=production
-WorkingDirectory=/home/pi/getTemp
+Type=simple
+ExecStart=/usr/bin/node /home/pi/getTemp/getTempStoreInDB.js
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=multi-user.targetch

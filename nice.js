@@ -1,3 +1,8 @@
+fs = require('fs');
+fs.writeFile('helloworld.txt', '', function (err) {
+  if (err) return console.log(err);
+  console.log('Hello World > helloworld.txt');
+});
 var mqtt = require('mqtt'); //https://www.npmjs.com/package/mqtt
 var Topic = 'home/laborTemp'; //subscribe to all topics
 var Broker_URL = 'mqtt://10.0.0.69';
@@ -50,6 +55,11 @@ function mqtt_messsageReceived(topic, message, packet)
 	message_str = message_str.replace(/\n$/, ''); //remove new line
 	//payload syntax: clientID,topic,message
 	//console.log(message_str)
+	fs.appendFile('helloworld.txt', message_str, function (err) 
+	{
+		if (err) throw err;
+		//console.log('Saved!');
+	  }); 
 	insert_message(topic, message_str, packet);
 };
 

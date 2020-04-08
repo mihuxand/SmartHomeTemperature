@@ -1,0 +1,16 @@
+#this is the coresponding service file to getTempStoreInDB.js
+#is has to be copyed under /etc/systemd/system/ to let getTempStoreInDB.js run as a service and the delete the .org ending
+#path may differ depending on your linux distro
+[Unit]
+Description=Read Temperature cache Service
+After=network.target
+After=mysqld.Service
+
+[Service]
+User=root
+Restart=always
+Type=simple
+ExecStart=/usr/bin/node /home/pi/getTemp/getTempStoreInDB.js
+
+[Install]
+WantedBy=multi-user.targetch

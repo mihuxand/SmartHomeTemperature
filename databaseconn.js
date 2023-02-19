@@ -3,8 +3,8 @@ var mysql = require('mysql2'); //https://www.npmjs.com/package/mysql
 var connection = mysql.createConnection({
 	host: "localhost",
 	//socketPath: '/run/mysqld/mysqld.sock',
-	user: "root",
-	password: "Passw0rt",
+	user: "****",
+	password: "****",
 	database: "tempandhum"
 });
 
